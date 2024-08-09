@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulah - Summary</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>MULAH</h1>
+        <h2>Summary</h2>
+        <p>Here are the details you provided:</p>
+        <div class="summary">
+            <p><strong>Phone Number:</strong> <span id="phoneDisplay"></span></p>
+            <p><strong>Name:</strong> <span id="nameDisplay"></span></p>
+            <p><strong>Birthday:</strong> <span id="birthdayDisplay"></span></p>
+            <p><strong>Email:</strong> <span id="emailDisplay"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const phone = localStorage.getItem('phone');
+    const name = localStorage.getItem('name');
+    const birthday = localStorage.getItem('birthday');
+    const email = localStorage.getItem('email');
+
+    document.getElementById('phoneDisplay').textContent = phone;
+    document.getElementById('nameDisplay').textContent = name;
+    document.getElementById('birthdayDisplay').textContent = birthday;
+    document.getElementById('emailDisplay').textContent = email;
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulah - Check Loyalty Points</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>MULAH</h1>
+        <h2>Hello, Welcome!</h2>
+        <p>Check Your Loyalty Points & Rewards</p>
+        <div class="input-group">
+            <label for="phone">+60</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter your mobile number" maxlength="10">
+            <button id="checkPoints" onclick="checkLoyaltyPoints()">Check Loyalty Points</button>
+        </div>
+    </div>
+
+    <script>
+        function checkLoyaltyPoints() {
+    const phoneInput = document.getElementById('phone').value;
+    const fullPhoneNumber = "+60" + phoneInput;
+
+    if (fullPhoneNumber === "+60173527250") {
+        // Store the phone number in local storage
+        localStorage.setItem('phone', fullPhoneNumber);
+        window.location.href = "two.html";
+    } else {
+        alert("Invalid phone number. Please try again.");
+    }
+}
+
+// Function to ensure only numbers are entered in the input field
+document.getElementById('phone').addEventListener('input', function (e) {
+    this.value = this.value.replace(/[^0-9]/g, '');
+});
+    </script>
+</body>
+</html>

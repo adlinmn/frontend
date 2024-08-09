@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulah - Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>MULAH</h1>
+        <h2>Registration</h2>
+        <p>Please fill up your details.</p>
+        <form id="registrationForm">
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter Name" required>
+            </div>
+            <div class="input-group">
+                <label for="birthday">Birthday</label>
+                <div class="birthday-input">
+                    <input type="text" id="day" name="day" placeholder="DD" maxlength="2" required>
+                    <input type="text" id="month" name="month" placeholder="MM" maxlength="2" required>
+                    <input type="text" id="year" name="year" placeholder="YYYY" maxlength="4" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+            </div>
+            <button type="button" onclick="submitForm()">Continue</button>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+    const name = document.getElementById('name').value.trim();
+    const day = document.getElementById('day').value.trim();
+    const month = document.getElementById('month').value.trim();
+    const year = document.getElementById('year').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    // Validate inputs
+    if (!name) {
+        alert("Please insert a name.");
+        return;
+    }
+
+    if (!day || !month || !year || day.length !== 2 || month.length !== 2 || year.length !== 4) {
+        alert("Please insert your birthday.");
+        return;
+    }
+
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+        alert("Please insert a valid email address.");
+        return;
+    }
+
+    const birthday = `${day}-${month}-${year}`;
+
+    // Store the data in local storage
+    localStorage.setItem('name', name);
+    localStorage.setItem('birthday', birthday);
+    localStorage.setItem('email', email);
+
+    window.location.href = "three.html";
+}
+
+// Function to ensure only numbers are entered in the birthday fields
+document.getElementById('day').addEventListener('input', function (e) {
+    this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+document.getElementById('month').addEventListener('input', function (e) {
+    this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+document.getElementById('year').addEventListener('input', function (e) {
+    this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+    </script>
+</body>
+</html>
